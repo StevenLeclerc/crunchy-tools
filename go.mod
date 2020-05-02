@@ -1,4 +1,4 @@
-module crunchy-tools
+module github.com/crunchy-apps/crunchy-tools
 
 go 1.14
 

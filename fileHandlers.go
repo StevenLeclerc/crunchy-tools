@@ -1,9 +1,10 @@
 package crunchyTools
 
 import (
-	"github.com/kardianos/osext"
-	"io/ioutil"
+	"io"
 	"os"
+
+	"github.com/kardianos/osext"
 )
 
 func GetApplicationRootFolder() string {
@@ -20,23 +21,23 @@ func OpenFile(pathFile string) *os.File {
 
 func StringToFile(source string, fileName string, permission os.FileMode) error {
 	sourceBytes := []byte(source)
-	errWriteFile := ioutil.WriteFile(fileName, sourceBytes, permission)
+	errWriteFile := os.WriteFile(fileName, sourceBytes, permission)
 	return HasError(errWriteFile, "Crunchy-Tools - FileHelpers - StringToFile", false)
 }
 
 func ByteToFile(source []byte, fileName string, permission os.FileMode) error {
-	errWriteFile := ioutil.WriteFile(fileName, source, permission)
+	errWriteFile := os.WriteFile(fileName, source, permission)
 	return HasError(errWriteFile, "Crunchy-Tools - FileHelpers - ByteToFile", false)
 }
 
 func FileToString(file *os.File) string {
-	stringFile, errStringify := ioutil.ReadAll(file)
+	stringFile, errStringify := io.ReadAll(file)
 	_ = HasError(errStringify, "Crunchy-Tools - FileHelpers - FileToString", false)
 	return string(stringFile)
 }
 
 func FileToByte(file *os.File) []byte {
-	stringFile, errStringify := ioutil.ReadAll(file)
+	stringFile, errStringify := io.ReadAll(file)
 	_ = HasError(errStringify, "Crunchy-Tools - FileHelpers - FileToByte", false)
 	return stringFile
 }

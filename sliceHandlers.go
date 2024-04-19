@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-//We permute the last value with the index to delete, then we return the array without the last element
+// We permute the last value with the index to delete, then we return the array without the last element
 func RemoveIdFromArray(arrayToUpdate interface{}, indexToRemove int) (result interface{}) {
 	switch arrayToUpdate := arrayToUpdate.(type) {
 	case []string:
@@ -15,7 +15,7 @@ func RemoveIdFromArray(arrayToUpdate interface{}, indexToRemove int) (result int
 	return
 }
 
-//CleanSlice will delete empty or whitespace string or from slice
+// CleanSlice will delete empty or whitespace string or from slice
 func CleanSlice(stringToHandle []string) []string {
 	for key, value := range stringToHandle {
 		isEmpty, errRegex := regexp.MatchString("^$|\\s+", value)
@@ -29,7 +29,7 @@ func CleanSlice(stringToHandle []string) []string {
 	return stringToHandle
 }
 
-//CompareSlice compare if the slice 1 is deeply equal to slice 2 without use of reflect.DeepEqual
+// CompareSlice compare if the slice 1 is deeply equal to slice 2 without use of reflect.DeepEqual
 func CompareSlice(sliceOne []string, sliceTwo []string) bool {
 	isExist := false
 	if len(sliceOne) == len(sliceTwo) {
@@ -48,12 +48,12 @@ func CompareSlice(sliceOne []string, sliceTwo []string) bool {
 	return false
 }
 
-//JoinSlicesToString return a string from merged slice with sperator
+// JoinSlicesToString return a string from merged slice with sperator
 func JoinSlicesToString(sliceTojoin []string, separator string) string {
 	return strings.Join(sliceTojoin, separator)
 }
 
-//CompareSliceValues check if the value inside ReferenceSlice are present in sliceToCheck
+// CompareSliceValues check if the value inside ReferenceSlice are present in sliceToCheck
 func CompareSliceValues(referentSlice []string, sliceToCkech []string) bool {
 	isExist := false
 	for _, valueRemote := range referentSlice {
@@ -69,7 +69,7 @@ func CompareSliceValues(referentSlice []string, sliceToCkech []string) bool {
 	return true
 }
 
-//ContainValueInSlice tells whether a contains x.
+// ContainValueInSlice tells whether a contains x.
 func ContainValueInSlice(a []string, x string) bool {
 	for _, n := range a {
 		if x == n {
@@ -77,4 +77,14 @@ func ContainValueInSlice(a []string, x string) bool {
 		}
 	}
 	return false
+}
+
+// ContainValueIndexInSlice return the index of the slice slot containing x, or 0.
+func ContainValueIndexInSlice(a []string, x string) int {
+	for index, n := range a {
+		if x == n {
+			return index
+		}
+	}
+	return 0
 }

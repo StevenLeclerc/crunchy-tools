@@ -1,9 +1,10 @@
 package crunchyTools
 
 import (
-	"github.com/mgutz/ansi"
 	"log"
 	"os"
+
+	"github.com/mgutz/ansi"
 )
 
 type logConfig struct {
@@ -20,9 +21,6 @@ type LogType struct {
 	Info *log.Logger
 	Warn *log.Logger
 	Err  *log.Logger
-}
-
-type logImproved interface {
 }
 
 var loggersConfigs []logConfig

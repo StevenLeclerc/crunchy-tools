@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-// We permute the last value with the index to delete, then we return the array without the last element
+// RemoveIdFromArray We permute the last value with the index to delete, then we return the array without the last element
 func RemoveIdFromArray(arrayToUpdate interface{}, indexToRemove int) (result interface{}) {
 	switch arrayToUpdate := arrayToUpdate.(type) {
 	case []string:
